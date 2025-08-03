@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>BlackJack</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="does.js"></script>
+  </head>
+
+  <body>
+    <section id="Title-game">
+      <h1>BlackJack</h1>
+      <button id="btn" class="show" onclick="toggleButtonShow()">
+        Start game
+      </button>
+      <p class="hidden" id="wonLostMessage"></p>
+      <button
+        class="hidden"
+        id="btnPlayAgain"
+        onclick="document.location.reload()"
+      >
+        Play Again
+      </button>
+    </section>
+
+    <section class="hidden" id="HitStaySection">
+      <div id="buttonsHitStay">
+        <div id="btn3-4">
+          <button id="btn3">Hit</button>
+          <button id="btn4">Stay</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="hidden" id="CardSection">
+      <div id="cardsInGame">
+        <p class="textInGame" id="yourCardSum">Your cards:</p>
+        <div id="your-cards"></div>
+
+        <p class="textInGame" id="dealerCardSum">Dealer's cards:</p>
+        <div id="dealer-cards">
+          <img
+            class="imageFeatures"
+            id="hidden-dealer"
+            src="Assets/Cards/BACK.png"
+            alt=""
+          />
+        </div>
+      </div>
+    </section>
+  </body>
+</html>
