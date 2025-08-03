@@ -26,4 +26,4 @@ A simple BlackJack card game built with vanilla JavaScript, HTML, and CSS.
 
 ## Live Demo
 
-[Play the game here!](https://pldevblackjack.netlify.app/) 
+<a href="https://pldevblackjack.netlify.app/" target="_blank" rel="noopener noreferrer">Play the game here!</a> 
