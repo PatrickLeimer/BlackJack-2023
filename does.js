@@ -12,7 +12,7 @@ let deck = [];
 window.onload = function () {
   buildDeck();
   shuffleDeck();
-  startGame();
+  // Don't start the game automatically - wait for user to click "Start game"
 };
 
 function buildDeck() {
@@ -61,32 +61,42 @@ function startGame() {
     cardImg.className = "imageFeatures";
     document.getElementById("your-cards").append(cardImg);
   }
+  
+  // Check for BlackJack after initial deal
+  let adjustedSum = reduceAce(yourSum, yourAceCount);
+  if (adjustedSum === 21) {
+    canHit = false;
+    endResult(adjustedSum, dealerSum);
+    return;
+  }
+  
   document.getElementById("btn3").addEventListener("click", hit);
   document.getElementById("btn4").addEventListener("click", stay);
-  console.log(yourSum);
+  console.log(yourSum + " " + yourAceCount + " Test 1");
 }
 
 function hit() {
    console.log(yourSum);
-   if (reduceAce(yourSum, yourAceCount) > 21 || yourSum > 21) {
-    canHit = false;
+   if (!canHit) {
     endResult(yourSum, dealerSum);
     return;
-  } 
-  if (!canHit) {
-    endResult(yourSum, dealerSum);
-    return;
-  } else {
-    let cardImg = document.createElement("img");
-    let card = deck.pop();
-    cardImg.src = "Assets/Cards/" + card + ".png";
-    yourSum += getValue(card);
-    yourAceCount += checkAce(card);
-    cardImg.className = "imageFeatures";
-    document.getElementById("your-cards").append(cardImg);
   }
-
-
+  
+  let cardImg = document.createElement("img");
+  let card = deck.pop();
+  cardImg.src = "Assets/Cards/" + card + ".png";
+  yourSum += getValue(card);
+  yourAceCount += checkAce(card);
+  cardImg.className = "imageFeatures";
+  document.getElementById("your-cards").append(cardImg);
+  
+  // Check for bust after drawing the card
+  let adjustedSum = reduceAce(yourSum, yourAceCount);
+  if (adjustedSum > 21) {
+    canHit = false;
+    endResult(adjustedSum, dealerSum);
+    return;
+  }
 }
 
 function stay() {
@@ -134,6 +144,8 @@ function endResult(yourSum, dealerSum) {
 
   if (yourSum > 21) {
     message1 = "Bust! You lost.";
+  } else if (yourSum === 21) {
+    message1 = "BlackJack! You won! 🎉";
   } else if (dealerSum > 21) {
     message1 = "You won!";
   } else if (yourSum == dealerSum) {
@@ -142,10 +154,6 @@ function endResult(yourSum, dealerSum) {
     message1 = "You won!";
   } else if (yourSum < dealerSum) {
     message1 = "You lost, play again!";
-  }
-
-  if (yourSum == 21 && yourSum > dealerSum) {
-    message1 += " Oh, and with a BlackJack";
   }
 
   message1.className = "showCards";
@@ -162,4 +170,7 @@ function toggleButtonShow() {
   button1.style.display = "none";
   document.getElementById("HitStaySection").className = "show";
   document.getElementById("CardSection").className = "showCards";
+  
+  // Start the game when user clicks "Start game"
+  startGame();
 }

@@ -1,31 +1,74 @@
 * {
-    background: rgba(9, 121, 84, 1);
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
-    margin-top: -2.5vw;
+    background: linear-gradient(135deg, #097954 0%, #0a8a5f 100%);
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+}
+
+/* Large screen layout - horizontal row */
+@media (min-width: 1024px) {
+    body {
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+        gap: 2rem;
+        padding: 2rem;
+    }
 }
 
 #Title-game {
     text-align: center;
     color: white;
-    font-size: 2vw;
+    font-size: 2rem;
     display: flex;
     flex-direction: column;
     align-items: center;
-    /* */
+    margin-bottom: 2rem;
+    background: rgba(9, 121, 84, 0.3);
+    padding: clamp(1rem, 3vw, 2rem);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    width: 90%;
+    max-width: 600px;
+}
+
+/* Large screen adjustments for title */
+@media (min-width: 1024px) {
+    #Title-game {
+        margin-bottom: 0;
+        margin-right: 2rem;
+        width: 300px;
+        max-width: 300px;
+    }
 }
 
 #btn,
 #btnPlayAgain {
     text-align: center;
-    background: #ffd700;
-    font-size: 1.5vw;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    font-size: clamp(1rem, 2.5vw, 1.2rem);
+    font-weight: bold;
     color: #000;
-    width: 20%;
-    border-radius: 10px;
+    width: clamp(150px, 40vw, 200px);
+    border-radius: 25px;
     border: none;
-    padding: 1vw;
+    padding: clamp(10px, 2vw, 15px) clamp(20px, 4vw, 30px);
+    margin: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
 #btn:hover,
@@ -33,59 +76,118 @@ body {
 #btn3:hover,
 #btn4:hover,
 #btnPlayAgain:hover {
-    background: #000;
+    background: linear-gradient(45deg, #000, #333);
     color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.4);
 }
 
 .textInGame,
 #wonLostMessage {
     color: white;
-    font-size: 1.5vw;
+    font-size: clamp(1rem, 3vw, 1.5rem);
+    font-weight: 500;
+    margin: 10px 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 #buttonsHitStay {
     display: flex;
     flex-direction: column;
-    gap: 2vw;
-    padding-bottom: 1vw;
+    gap: 1rem;
+    padding-bottom: 1rem;
+    background: rgba(9, 121, 84, 0.3);
+    padding: clamp(1rem, 3vw, 2rem);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin: 1rem 0;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+    width: 90%;
+    max-width: 500px;
+}
+
+/* Large screen adjustments for buttons */
+@media (min-width: 1024px) {
+    #buttonsHitStay {
+        width: 250px;
+        max-width: 250px;
+        margin: 0;
+    }
 }
 
 #btn3,
 #btn4 {
     text-align: center;
-    background: #ffd700;
-    font-size: 1.5vw;
-    color: #000;
-    width: 20%;
-    border-radius: 10px;
+    background: linear-gradient(45deg, #ffd700, #ffed4e);
+    font-size: clamp(0.9rem, 2.5vw, 1.1rem);
     font-weight: bold;
+    color: #000;
+    width: clamp(120px, 35vw, 150px);
+    border-radius: 25px;
     border: none;
-    padding: 0.5vw;
+    padding: clamp(8px, 2vw, 12px) clamp(15px, 3vw, 25px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 4px 15px rgba(255, 215, 0, 0.3);
 }
 
 #btn3-4 {
     display: flex;
     justify-content: center;
-    flex: 0vw;
-    gap: 2vw;
+    gap: clamp(1rem, 3vw, 2rem);
+    flex-wrap: wrap;
 }
 
 #cardsInGame {
     display: flex;
     flex-direction: column;
     align-items: center;
+    background: rgba(9, 121, 84, 0.3);
+    padding: clamp(1rem, 3vw, 2rem);
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    margin: 1rem 0;
+    width: 90%;
+    max-width: 600px;
+    border: 2px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Large screen adjustments for cards */
+@media (min-width: 1024px) {
+    #cardsInGame {
+        width: 400px;
+        max-width: 400px;
+        margin: 0;
+    }
 }
 
 #dealer-cards,
 #your-cards {
     display: flex;
-    gap: 2vw;
-    flex: 0;
+    gap: 0.5rem;
+    margin: 1rem 0;
+    min-height: clamp(80px, 15vw, 120px);
+    align-items: center;
+    justify-content: flex-start;
+    flex-direction: row;
+    width: 100%;
+    overflow-x: auto;
+    padding: 0.5rem;
 }
 
 .imageFeatures {
-    max-width: 10vw;
+    max-width: clamp(50px, 12vw, 80px);
     height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    transition: transform 0.3s ease;
+    flex-shrink: 0;
+}
+
+.imageFeatures:hover {
+    transform: scale(1.05);
 }
 
 .hidden {
@@ -97,15 +199,101 @@ body {
 }
 
 .showCards {
-    animation: fadeInCards 3s;
+    animation: fadeInCards 0.8s ease-out;
 }
 
 @keyframes fadeInCards {
     from {
         opacity: 0;
+        transform: translateY(20px);
     }
 
     to {
         opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Mobile-specific adjustments */
+@media (max-width: 768px) {
+    body {
+        padding: 10px;
+    }
+    
+    #Title-game {
+        width: 95%;
+        margin-bottom: 1rem;
+    }
+    
+    #buttonsHitStay {
+        width: 95%;
+    }
+    
+    #cardsInGame {
+        width: 95%;
+    }
+    
+    #btn3-4 {
+        flex-direction: column;
+        align-items: center;
+    }
+    
+    #btn3,
+    #btn4 {
+        width: 200px;
+    }
+    
+    #dealer-cards,
+    #your-cards {
+        flex-direction: row;
+        justify-content: flex-start;
+        gap: 0.5rem;
+        overflow-x: auto;
+        padding: 0.5rem;
+    }
+    
+    .imageFeatures {
+        max-width: 60px;
+    }
+}
+
+/* Medium screen adjustments */
+@media (min-width: 769px) and (max-width: 1023px) {
+    body {
+        flex-direction: column;
+        gap: 1rem;
+    }
+    
+    #Title-game {
+        width: 80%;
+        max-width: 500px;
+    }
+    
+    #buttonsHitStay {
+        width: 80%;
+        max-width: 400px;
+    }
+    
+    #cardsInGame {
+        width: 80%;
+        max-width: 500px;
+    }
+}
+
+/* Small mobile devices */
+@media (max-width: 480px) {
+    #Title-game h1 {
+        font-size: 2rem;
+    }
+    
+    .textInGame,
+    #wonLostMessage {
+        font-size: 1rem;
+    }
+    
+    #btn,
+    #btnPlayAgain {
+        width: 180px;
+        font-size: 1rem;
     }
 }
